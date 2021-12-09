@@ -1,17 +1,18 @@
 body {
-  background: linear-gradient(#98bae7, #7267cb);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
 }
 
 h1 {
+  background-image: linear-gradient(to right, #b8e4f0, #7267cb);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   text-align: center;
   margin: 0 auto;
+  padding: 20px;
 }
 
 .content {
   background: #b8e4f0;
-  margin: 0 auto;
+  margin: 20px auto;
   padding: 20px;
   max-width: fit-content;
 }
