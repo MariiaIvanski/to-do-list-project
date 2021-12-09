@@ -1,0 +1,21 @@
+body {
+  background: linear-gradient(#98bae7, #7267cb);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+h1 {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.content {
+  background: #b8e4f0;
+  margin: 0 auto;
+  padding: 20px;
+  max-width: fit-content;
+}
+
+.content .task-list li {
+  list-style: inside;
+}
