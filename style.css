@@ -1,6 +1,3 @@
-body {
-}
-
 h1 {
   background-image: linear-gradient(to right, #b8e4f0, #7267cb);
   background-repeat: no-repeat;
@@ -17,6 +14,13 @@ h1 {
   max-width: fit-content;
 }
 
-.content .task-list li {
-  list-style: inside;
+.content ul li {
+  display: flex;
+  flex-grow: 3;
+  list-style: none;
+  margin: 5px 10px;
+}
+
+.content .delete-btn {
+  border-radius: 50%;
 }

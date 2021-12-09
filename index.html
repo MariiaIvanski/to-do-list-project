@@ -16,20 +16,41 @@
   <body>
     <h1>To-Do List</h1>
     <div class="content">
-      <input type="text" id="input-task" />
-      <button id="add-task-button">Add task</button>
-      <ul id="task-list">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="input-task"
+          placeholder="e.g. read a book"
+          aria-label="Task"
+          aria-describedby="button-addon2"
+        />
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          id="button-addon2"
+        >
+          Add task
+        </button>
+      </div>
+      <ul id="task-list" class="list-group">
         <li>
-          <input type="checkbox" /><span class="task">Do yoga</span
-          ><button class="delete-btn">X</button>
+          <input class="form-check-input mt-0" type="checkbox" value="" /><span
+            class="task list-group-item"
+            >Do yoga</span
+          ><button type="button" class="delete-btn btn btn-danger">X</button>
         </li>
         <li>
-          <input type="checkbox" /><span class="task">Water the plants</span
-          ><button class="delete-btn">X</button>
+          <input class="form-check-input mt-0" type="checkbox" value="" /><span
+            class="task list-group-item"
+            >Water the plants</span
+          ><button type="button" class="delete-btn btn btn-danger">X</button>
         </li>
         <li>
-          <input type="checkbox" /><span class="task">Feed the cat</span
-          ><button class="delete-btn">X</button>
+          <input class="form-check-input mt-0" type="checkbox" value="" /><span
+            class="task list-group-item"
+            >Feed the cat</span
+          ><button type="button" class="delete-btn btn btn-danger">X</button>
         </li>
       </ul>
     </div>
