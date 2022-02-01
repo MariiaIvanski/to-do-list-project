@@ -5,7 +5,7 @@ function addTask(newTask) {
           <input class="form-check-input mt-0" type="checkbox" value="" /><span
             class="task list-group-item"
             >${newTask}</span
-          ><button type="button" class="btn-close" aria-label="Delete"></button>
+          ><button type="button" class="btn-close delete-btn" aria-label="Delete"></button>
         </li>`;
   placeholder.value = ``;
 }
@@ -27,3 +27,14 @@ function handleSubmit(event) {
 
 let inputBtn = document.querySelector("#add-task-button");
 inputBtn.addEventListener("click", handleSubmit);
+
+/*let deleteBtn = document.getElementsByClassName("delete-btn");
+deleteBtn.addeventListener("click", deleteTask);
+
+function deleteTask() {
+  let allTasks = document.getElementsByClassName("form-check-input");
+  for (let i = 0; i < allTasks.length; i++) {
+    allTasks[i].innerHTML = "foo";
+  }
+}
+*/
