@@ -14,8 +14,11 @@ function handleSubmit(event) {
   event.preventDefault();
   let newTask = document.querySelector("#input-task");
   if (!newTask.value.match(/^[A-Z a-z_-]+$/)) {
-    alert("English letters only 😉");
+    alert("Add your task in English 😉");
     let placeholder = document.querySelector("#input-task");
+    placeholder.value = ``;
+  } else if (newTask.value == ` `) {
+    alert("Please, write something 😉");
     placeholder.value = ``;
   } else {
     addTask(newTask.value.trim());
