@@ -1,7 +1,7 @@
 function addTask(newTask) {
   let taskList = document.querySelector("#task-list");
   let placeholder = document.querySelector("#input-task");
-  taskList.innerHTML += `<li class="task-item">
+  taskList.innerHTML += `<li>
           <input class="form-check-input mt-0" type="checkbox" value="" /><span
             class="task list-group-item"
             >${newTask}</span
@@ -28,14 +28,16 @@ function handleSubmit(event) {
 let inputBtn = document.querySelector("#add-task-button");
 inputBtn.addEventListener("click", handleSubmit);
 
-let allTasks = document.querySelectorAll(".task-item");
-for (let index = 0; index < allTasks.length; index++) {
-  allTasks[index].addEventListener("click", function () {
-    this.classList.toggle("active");
-  });
-  allTasks[index]
-    .querySelector(".delete-button")
-    .addEventListener("click", function () {
-      this.closest(".list-item").remove();
-    });
+let items = document.querySelectorAll("#list li"),
+  tab = [],
+  liIndex;
+
+for (let i = 0; i < items.length; i++) {
+  items[i].onclick = function () {
+    liIndex = tab.indexOf(this.innerHTML);
+    console.log(this.innerHTML + "INDEX=" + liIndex);
+  };
+  function removeLI() {
+    items[liIndex].parentNode.removeChild(items[liIndex]);
+  }
 }
