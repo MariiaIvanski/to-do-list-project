@@ -1,3 +1,12 @@
+var close = document.getElementsByClassName("delete-btn");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function () {
+    var div = this.parentElement;
+    div.style.display = "none";
+  };
+}
+
 function addTask(newTask) {
   let taskList = document.querySelector("#task-list");
   let placeholder = document.querySelector("#input-task");
@@ -27,17 +36,3 @@ function handleSubmit(event) {
 
 let inputBtn = document.querySelector("#add-task-button");
 inputBtn.addEventListener("click", handleSubmit);
-
-let items = document.querySelectorAll("#list li"),
-  tab = [],
-  liIndex;
-
-for (let i = 0; i < items.length; i++) {
-  items[i].onclick = function () {
-    liIndex = tab.indexOf(this.innerHTML);
-    console.log(this.innerHTML + "INDEX=" + liIndex);
-  };
-  function removeLI() {
-    items[liIndex].parentNode.removeChild(items[liIndex]);
-  }
-}
