@@ -7,7 +7,46 @@ for (i = 0; i < close.length; i++) {
   };
 }
 
-function addTask(newTask) {
+// Add a "checked" symbol when clicking on a list item
+var list = document.querySelector("ul");
+list.addEventListener(
+  "click",
+  function (ev) {
+    if (ev.target.tagName === "LI") {
+      ev.target.classList.toggle("checked");
+    }
+  },
+  false
+);
+
+// Create a new list item when clicking on the "Add" button
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("input-task").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === "") {
+    alert("You must write something!");
+  } else {
+    document.getElementById("task-list").appendChild(li);
+  }
+  document.getElementById("input-task").value = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function () {
+      var div = this.parentElement;
+      div.style.display = "none";
+    };
+  }
+}
+
+/* function addTask(newTask) {
   let taskList = document.querySelector("#task-list");
   let placeholder = document.querySelector("#input-task");
   taskList.innerHTML += `<li>
@@ -17,6 +56,8 @@ function addTask(newTask) {
           ><button type="button" class="btn-close delete-btn" aria-label="Delete"></button>
         </li>`;
   placeholder.value = ``;
+  var t = document.createTextNode(newTask);
+  li.appendChild(t);
 }
 
 function handleSubmit(event) {
@@ -36,3 +77,4 @@ function handleSubmit(event) {
 
 let inputBtn = document.querySelector("#add-task-button");
 inputBtn.addEventListener("click", handleSubmit);
+*/
