@@ -1,5 +1,5 @@
 document.querySelector("#add-task-button").onclick = function () {
-  if (document.querySelector("#input-task").value.length == 0) {
+  if (document.querySelector("#input-task").value.length === 0) {
     alert("Please Enter a Task");
   } else {
     document.querySelector("#task-list").innerHTML += `
@@ -14,7 +14,8 @@ document.querySelector("#add-task-button").onclick = function () {
           ></button>
             </li>
         `;
-
+    let placeholder = document.querySelector("#input-task");
+    placeholder.value = "";
     var current_tasks = document.querySelectorAll(".delete-btn");
     for (var i = 0; i < current_tasks.length; i++) {
       current_tasks[i].onclick = function () {
