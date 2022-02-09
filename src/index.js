@@ -1,12 +1,19 @@
-/*function checkBox() {
-  var inputElem = document.querySelectorAll(".form-check-input");
-  var taskDone = document.querySelectorAll(".task");
+document.querySelectorAll(".form-check-input").onclick = function () {
+  let taskDone = document.querySelectorAll(".task");
   for (var i = 0; i < taskDone.length; i++) {
-    if (inputElem[i].checked == true) {
+    taskDone[i].addEventListener("click", function (e) {
+      e.preventDefault();
       taskDone[i].classList.toggle("isDone");
-    }
+    });
   }
-}*/
+};
+
+var current_tasks = document.querySelectorAll(".delete-btn");
+for (var i = 0; i < current_tasks.length; i++) {
+  current_tasks[i].onclick = function () {
+    this.parentNode.remove();
+  };
+}
 
 document.querySelector("#add-task-button").onclick = function () {
   if (document.querySelector("#input-task").value.length === 0) {
@@ -26,11 +33,11 @@ document.querySelector("#add-task-button").onclick = function () {
         `;
     let placeholder = document.querySelector("#input-task");
     placeholder.value = "";
-    var current_tasks = document.querySelectorAll(".delete-btn");
-    for (var i = 0; i < current_tasks.length; i++) {
-      current_tasks[i].onclick = function () {
-        this.parentNode.remove();
-      };
-    }
+  }
+  var current_tasks = document.querySelectorAll(".delete-btn");
+  for (var i = 0; i < current_tasks.length; i++) {
+    current_tasks[i].onclick = function () {
+      this.parentNode.remove();
+    };
   }
 };
