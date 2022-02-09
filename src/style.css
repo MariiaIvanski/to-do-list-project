@@ -39,3 +39,7 @@ h1 {
 .content .delete-btn {
   border-radius: 50%;
 }
+
+.isDone {
+  text-decoration: line-through;
+}
