@@ -1,3 +1,13 @@
+/*function checkBox() {
+  var inputElem = document.querySelectorAll(".form-check-input");
+  var taskDone = document.querySelectorAll(".task");
+  for (var i = 0; i < taskDone.length; i++) {
+    if (inputElem[i].checked == true) {
+      taskDone[i].classList.toggle("isDone");
+    }
+  }
+}*/
+
 document.querySelector("#add-task-button").onclick = function () {
   if (document.querySelector("#input-task").value.length === 0) {
     alert("Please Enter a Task");
