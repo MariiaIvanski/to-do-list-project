@@ -1,26 +1,17 @@
-/*document.querySelectorAll(".form-check-input").onclick = function () {
-  let taskDone = document.querySelectorAll(".task");
-  for (var i = 0; i < taskDone.length; i++) {
-    taskDone[i].addEventListener("click", function (e) {
-      e.preventDefault();
-      taskDone[i].classList.toggle("isDone");
-    });
-  }
-};*/
 let checkbox = document.querySelectorAll("input[name=checkbox]");
 let taskDone = document.querySelectorAll(".task");
-for (var x = 0; x < checkbox.length; x++) {
+for (let x = 0; x < checkbox.length; x++) {
   checkbox[x].addEventListener("change", function () {
     if (this.checked) {
-      taskDone.classList.toggle(`isDone`);
+      taskDone[x].classList.toggle(`isDone`);
     } else {
-      console.log("Checkbox is not checked..");
+      taskDone[x].classList.toggle(`isDone`);
     }
   });
 }
 
-var current_tasks = document.querySelectorAll(".delete-btn");
-for (var i = 0; i < current_tasks.length; i++) {
+let current_tasks = document.querySelectorAll(".delete-btn");
+for (let i = 0; i < current_tasks.length; i++) {
   current_tasks[i].onclick = function () {
     this.parentNode.remove();
   };
@@ -45,10 +36,22 @@ document.querySelector("#add-task-button").onclick = function () {
     let placeholder = document.querySelector("#input-task");
     placeholder.value = "";
   }
-  var current_tasks = document.querySelectorAll(".delete-btn");
-  for (var i = 0; i < current_tasks.length; i++) {
+  let current_tasks = document.querySelectorAll(".delete-btn");
+  for (let i = 0; i < current_tasks.length; i++) {
     current_tasks[i].onclick = function () {
       this.parentNode.remove();
     };
+  }
+
+  let checkbox = document.querySelectorAll("input[name=checkbox]");
+  let taskDone = document.querySelectorAll(".task");
+  for (let x = 0; x < checkbox.length; x++) {
+    checkbox[x].addEventListener("change", function () {
+      if (this.checked) {
+        taskDone[x].classList.toggle(`isDone`);
+      } else {
+        taskDone[x].classList.toggle(`isDone`);
+      }
+    });
   }
 };
