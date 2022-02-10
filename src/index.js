@@ -7,15 +7,17 @@
     });
   }
 };*/
-var checkbox = document.querySelector("input[name=checkbox]");
-
-checkbox.addEventListener("change", function () {
-  if (this.checked) {
-    console.log("Checkbox is checked..");
-  } else {
-    console.log("Checkbox is not checked..");
-  }
-});
+let checkbox = document.querySelectorAll("input[name=checkbox]");
+let taskDone = document.querySelectorAll(".task");
+for (var x = 0; x < checkbox.length; x++) {
+  checkbox[x].addEventListener("change", function () {
+    if (this.checked) {
+      taskDone.classList.toggle(`isDone`);
+    } else {
+      console.log("Checkbox is not checked..");
+    }
+  });
+}
 
 var current_tasks = document.querySelectorAll(".delete-btn");
 for (var i = 0; i < current_tasks.length; i++) {
