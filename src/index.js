@@ -1,4 +1,4 @@
-document.querySelectorAll(".form-check-input").onclick = function () {
+/*document.querySelectorAll(".form-check-input").onclick = function () {
   let taskDone = document.querySelectorAll(".task");
   for (var i = 0; i < taskDone.length; i++) {
     taskDone[i].addEventListener("click", function (e) {
@@ -6,7 +6,16 @@ document.querySelectorAll(".form-check-input").onclick = function () {
       taskDone[i].classList.toggle("isDone");
     });
   }
-};
+};*/
+var checkbox = document.querySelector("input[name=checkbox]");
+
+checkbox.addEventListener("change", function () {
+  if (this.checked) {
+    console.log("Checkbox is checked..");
+  } else {
+    console.log("Checkbox is not checked..");
+  }
+});
 
 var current_tasks = document.querySelectorAll(".delete-btn");
 for (var i = 0; i < current_tasks.length; i++) {
@@ -21,7 +30,7 @@ document.querySelector("#add-task-button").onclick = function () {
   } else {
     document.querySelector("#task-list").innerHTML += `
             <li class="task">
-                <input class="form-check-input mt-0" type="checkbox" value="" /><span class="task list-group-item" id="taskname">
+                <input class="form-check-input mt-0" type="checkbox" name="checkbox" value="" /><span class="task list-group-item" id="taskname">
                     ${document.querySelector("#input-task").value}
                 </span>
                <button
