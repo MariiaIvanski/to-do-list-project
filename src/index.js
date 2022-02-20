@@ -1,11 +1,14 @@
 let checkbox = document.querySelectorAll("input[name=checkbox]");
 let taskDone = document.querySelectorAll(".task");
+
 for (let x = 0; x < checkbox.length; x++) {
   checkbox[x].addEventListener("change", function () {
     if (this.checked) {
-      taskDone[x].classList.toggle(`isDone`);
+      taskDone[x].classList.add(`isDone`);
+      console.log("test2");
     } else {
-      taskDone[x].classList.toggle(`isDone`);
+      taskDone[x].classList.remove(`isDone`);
+      console.log("test3");
     }
   });
 }
@@ -18,11 +21,12 @@ for (let i = 0; i < current_tasks.length; i++) {
 }
 
 document.querySelector("#add-task-button").onclick = function () {
-  if (document.querySelector("#input-task").value.length === 0) {
+  let newTask = document.querySelector("#input-task").value.trim();
+  if (newTask.length === 0) {
     alert("Please Enter a Task");
   } else {
     document.querySelector("#task-list").innerHTML += `
-            <li class="task">
+            <li>
                 <input class="form-check-input mt-0" type="checkbox" name="checkbox" value="" /><span class="task list-group-item" id="taskname">
                     ${document.querySelector("#input-task").value}
                 </span>
