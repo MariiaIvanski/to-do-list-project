@@ -1,35 +1,37 @@
-let checkbox = document.querySelectorAll("input[name=checkbox]");
-let taskDone = document.querySelectorAll(".task");
+function manageTasks() {
+  let checkbox = document.querySelectorAll("input[type=checkbox]");
+  let taskDone = document.querySelectorAll(".task");
+  for (let x = 0; x < checkbox.length; x++) {
+    checkbox[x].addEventListener("change", function () {
+      if (checkbox[x].checked == true) {
+        taskDone[x].classList.add(`isDone`);
+        checkbox[x].setAttribute("checked", "checked");
+      } else {
+        taskDone[x].classList.remove(`isDone`);
+        localStorage.checked = false;
+      }
+    });
+  }
 
-for (let x = 0; x < checkbox.length; x++) {
-  checkbox[x].addEventListener("change", function () {
-    if (this.checked) {
-      taskDone[x].classList.add(`isDone`);
-      console.log("test2");
-    } else {
-      taskDone[x].classList.remove(`isDone`);
-      console.log("test3");
-    }
-  });
+  let current_tasks = document.querySelectorAll(".delete-btn");
+  for (let i = 0; i < current_tasks.length; i++) {
+    current_tasks[i].onclick = function () {
+      this.parentNode.remove();
+    };
+  }
 }
 
-let current_tasks = document.querySelectorAll(".delete-btn");
-for (let i = 0; i < current_tasks.length; i++) {
-  current_tasks[i].onclick = function () {
-    this.parentNode.remove();
-  };
-}
-
-document.querySelector("#add-task-button").onclick = function () {
+function addNewTask(event) {
+  event.preventDefault();
   let newTask = document.querySelector("#input-task").value.trim();
   if (newTask.length === 0) {
     alert("Please Enter a Task");
   } else {
     document.querySelector("#task-list").innerHTML += `
             <li>
-                <input class="form-check-input mt-0" type="checkbox" name="checkbox" value="" /><span class="task list-group-item" id="taskname">
-                    ${document.querySelector("#input-task").value}
-                </span>
+                <input class="form-check-input mt-0" type="checkbox" name="checkbox" value="" /><label for="checkbox" class="task list-group-item" id="taskname">
+                    ${newTask}
+                </label>
                <button
             type="button"
             class="btn-close delete-btn"
@@ -40,22 +42,11 @@ document.querySelector("#add-task-button").onclick = function () {
     let placeholder = document.querySelector("#input-task");
     placeholder.value = "";
   }
-  let current_tasks = document.querySelectorAll(".delete-btn");
-  for (let i = 0; i < current_tasks.length; i++) {
-    current_tasks[i].onclick = function () {
-      this.parentNode.remove();
-    };
-  }
 
-  let checkbox = document.querySelectorAll("input[name=checkbox]");
-  let taskDone = document.querySelectorAll(".task");
-  for (let x = 0; x < checkbox.length; x++) {
-    checkbox[x].addEventListener("change", function () {
-      if (this.checked) {
-        taskDone[x].classList.toggle(`isDone`);
-      } else {
-        taskDone[x].classList.toggle(`isDone`);
-      }
-    });
-  }
-};
+  manageTasks();
+}
+
+let form = document.querySelector("#tasks-form");
+form.addEventListener("submit", addNewTask);
+
+manageTasks();
