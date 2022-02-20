@@ -8,7 +8,6 @@ function manageTasks() {
         checkbox[x].setAttribute("checked", "checked");
       } else {
         taskDone[x].classList.remove(`isDone`);
-        localStorage.checked = false;
       }
     });
   }
