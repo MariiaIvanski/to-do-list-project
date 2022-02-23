@@ -1,3 +1,8 @@
+:root {
+  --primary-color: rgb(114, 103, 203);
+  --secondary-color: rgb(184, 228, 240);
+}
+
 body {
   background-image: url("/src/list.jpg");
   background-repeat: no-repeat;
@@ -6,7 +11,11 @@ body {
 }
 
 h1 {
-  background-image: linear-gradient(to right, #b8e4f0, #7267cb);
+  background-image: linear-gradient(
+    to right,
+    var(--secondary-color),
+    var(--primary-color)
+  );
   background-repeat: no-repeat;
   background-attachment: fixed;
   text-align: center;
@@ -15,7 +24,7 @@ h1 {
 }
 
 .content {
-  background: #b8e4f0;
+  background: var(--secondary-color);
   margin: 20px auto;
   padding: 20px;
   max-width: fit-content;
@@ -51,7 +60,8 @@ h1 {
 
 .close {
   color: white;
-  background-color: rgba(0, 0, 0, 0.904);
+  background-color: var(--primary-color);
+  border: none;
   border-radius: 50%;
   width: 30px;
   height: 30px;
@@ -61,5 +71,6 @@ h1 {
 
 .close:hover {
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.789);
+  background-color: rgba(114, 103, 203, 0.8);
+  transition: all 200ms ease-in-out;
 }
