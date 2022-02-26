@@ -1,3 +1,20 @@
+let taskList;
+let inputValue = document.getElementById("input-task").value;
+!localStorage.tasks
+  ? (tasks = [])
+  : (tasks = JSON.parse(localStorage.getItem("tasks")));
+
+function Task(inputValue) {
+  this.inputValue = inputValue;
+  this.completed = false;
+}
+
+const updateLocal = () => {
+  localStorage.setItem("tasks", JSON.stringify(taskList));
+};
+
+console.log(taskList);
+
 var myNodelist = document.getElementsByTagName("LI");
 var i;
 for (i = 0; i < myNodelist.length; i++) {
@@ -29,26 +46,24 @@ list.addEventListener(
   false
 );
 
-function newElement(e) {
-  e.preventDefault();
-  let li = document.createElement("li");
-  let inputField = document.createElement("INPUT");
-  inputField.setAttribute("class", "form-check-input mt-0");
-  inputField.setAttribute("type", "checkbox");
-  inputField.setAttribute("name", "checkbox");
-  inputField.setAttribute("value", "");
-
-  let inputValue = document.getElementById("input-task").value;
-  var span = document.createElement("SPAN");
-  let t = document.createTextNode(inputValue);
-  span.setAttribute("class", "task list-group-item");
-
-  li.appendChild(inputField);
-  span.appendChild(t);
-  li.appendChild(span);
+function newElement() {
   if (inputValue === "") {
     alert("You must write something!");
   } else {
+    let li = document.createElement("li");
+    let inputField = document.createElement("INPUT");
+    inputField.setAttribute("class", "form-check-input mt-0");
+    inputField.setAttribute("type", "checkbox");
+    inputField.setAttribute("name", "checkbox");
+    inputField.setAttribute("value", "");
+
+    var span = document.createElement("SPAN");
+    let t = document.createTextNode(inputValue);
+    span.setAttribute("class", "task list-group-item");
+
+    li.appendChild(inputField);
+    span.appendChild(t);
+    li.appendChild(span);
     document.getElementById("task-list").appendChild(li);
   }
   document.getElementById("input-task").value = "";
@@ -68,4 +83,8 @@ function newElement(e) {
 }
 
 let form = document.getElementById("tasks-form");
-form.addEventListener("submit", newElement);
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  taskList.push(new Task(inputValue));
+  updateLocal();
+});
