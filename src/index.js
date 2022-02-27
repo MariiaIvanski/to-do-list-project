@@ -18,69 +18,39 @@ function newElement(inputValue) {
   li.appendChild(span);
   document.getElementById("task-list").appendChild(li);
 
-  var span = document.createElement("button");
+  var btN = document.createElement("button");
   var txt = document.createTextNode("\u00D7");
-  span.className = "close delete-btn";
-  span.appendChild(txt);
-  li.appendChild(span);
-  span.addEventListener("click", (e) => {
+  btN.className = "close delete-btn";
+  btN.appendChild(txt);
+  li.appendChild(btN);
+  btN.addEventListener("click", (e) => {
     li.parentNode.removeChild(li);
-    localStorage.removeItem(li);
+    taskList = taskList.filter((e) => e !== inputValue);
+    localStorage.setItem("tasks", JSON.stringify(taskList));
   });
 
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function () {
-      var div = this.parentElement;
-      div.remove();
-    };
-  }
   document.getElementById("input-task").value = "";
 }
 
-function handleSubmit(event) {
-  event.preventDefault();
+function handleSubmit(e) {
+  e.preventDefault();
   let inputValue = document.getElementById("input-task").value;
-
+  console.log(inputValue);
   if (inputValue === "") {
     alert("You must write something!");
   } else {
-    function Task(inputValue) {
-      this.inputValue = inputValue;
-    }
-    taskList.push(new Task(inputValue));
+    taskList.push(inputValue);
     localStorage.setItem("tasks", JSON.stringify(taskList));
-    inputValue = "";
     newElement(inputValue);
   }
 }
 
-console.log(taskList);
-/*
-var myNodelist = document.getElementsByTagName("LI");
-var i;
-for (i = 0; i < myNodelist.length; i++) {
-  var span = document.createElement("button");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close delete-btn";
-  span.appendChild(txt);
-  myNodelist[i].appendChild(span);
-}
-
-var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function () {
-    var div = this.parentElement;
-    div.remove();
-  };
-}
-*/
 var list = document.querySelector("ul");
 list.addEventListener(
   "click",
-  function (ev) {
-    if (ev.target.tagName === "INPUT") {
-      let spanElem = ev.target.nextSibling;
+  function (e) {
+    if (e.target.tagName === "INPUT") {
+      let spanElem = e.target.nextSibling;
       spanElem.classList.toggle("isDone");
     }
   },
